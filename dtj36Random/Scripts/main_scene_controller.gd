@@ -13,20 +13,30 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hideAllChallenges()
 	setupSignals()
 
-	# startChallengeOne()
+	startChallengeOne()
+
+
+func hideAllChallenges():
+	challgeOne.visible = false
+	challgeTwo.visible = false
 
 
 func startChallengeOne():
+	print("Starting challenge one")
+	challgeOne.visible = true
 	tweenBG(challgeOneBG)
-	await _create_timer(2)
+	await _create_timer(1)
 	challgeOne.showAllObjects()
 
 func startChallengeTwo():
+	print("Starting challenge two")
+	challgeTwo.visible = true
 	tweenBG(challgeTwoBG)
-	await _create_timer(2)
-	# challgeTwo.showAllObjects()
+	await _create_timer(1)
+	challgeTwo.showAllObjects()
 
 
 func _create_timer(time: float = 0) -> Signal:
@@ -38,6 +48,7 @@ func _process(_delta: float) -> void:
 
 func setupSignals():
 	challgeOne.challengeIsDone.connect(onChallengeOneDone)
+	challgeTwo.challengeIsDone.connect(onChallengeTwoDone)
 
 func tweenBG(color: Color, duration: float = 3.5):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
@@ -45,7 +56,7 @@ func tweenBG(color: Color, duration: float = 3.5):
 
 func onChallengeOneDone():
 	print("Challenge one done")
-	await _create_timer(3)
+	await _create_timer(2)
 	challgeOne.hideAllObjects(true)
 	await challgeOne.allObjectsHidden
 	startChallengeTwo()
@@ -53,3 +64,7 @@ func onChallengeOneDone():
 
 func onChallengeTwoDone():
 	print("Challenge two done")
+	await _create_timer(1)
+	challgeTwo.hideAllObjects(true)
+	await challgeTwo.allObjectsHidden
+	# startChallengeTwo()

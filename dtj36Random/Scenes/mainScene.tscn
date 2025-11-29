@@ -14,9 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://by3u1pa2hlxro" path="res://Assets/Faces/faces (6).png" id="11_4djc3"]
 [ext_resource type="Texture2D" uid="uid://g52gdoxqbl78" path="res://Assets/Faces/REFLECTION-TEXT1.PNG" id="12_v2gni"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challgeOne")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challgeOne", "challgeTwo", "bg")]
 script = ExtResource("1_m8nr8")
 challgeOne = NodePath("FirstChallenge")
+challgeTwo = NodePath("SecondChallenge")
+bg = NodePath("Control/ColorRect")
+challgeOneBG = Color(0.024000006, 0, 0.06, 1)
+challgeTwoBG = Color(0.043999985, 0, 0.06, 1)
+challgeThreeBG = Color(0.06, 0, 0.056, 1)
+challgeFourBG = Color(0.06, 0, 0.03600002, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -43,7 +49,6 @@ size_flags_horizontal = 3
 color = Color(0.003999996, 0, 0.06, 1)
 
 [node name="FirstChallenge" type="Node2D" parent="." node_paths=PackedStringArray("numberLabel", "showLabel", "resultLabel", "objectToShow")]
-visible = false
 script = ExtResource("1_hewda")
 numberLabel = NodePath("Control/GameLabel-Number")
 showLabel = NodePath("Control/GameLabel-Number2")
@@ -63,11 +68,11 @@ grow_vertical = 2
 
 [node name="GameLabel" parent="FirstChallenge/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 154.0
 offset_top = 112.0
-offset_right = 953.0
+offset_right = 979.0
 offset_bottom = 155.0
-text = "Click the button until the number reaches: "
+text = "Click the button until the number equals: "
 
 [node name="GameLabel-Number" parent="FirstChallenge/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
@@ -101,11 +106,13 @@ offset_right = 279.0
 offset_bottom = 546.0
 text = ""
 
-[node name="SecondChallenge" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "slider")]
+[node name="SecondChallenge" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "slider", "objectToShow", "finishButton")]
 script = ExtResource("5_yyxd1")
 texturesForReflection = Array[Texture]([ExtResource("6_so5kr"), ExtResource("7_0bgj2"), ExtResource("8_oy1pr"), ExtResource("9_uu6ay"), ExtResource("10_08630"), ExtResource("11_4djc3"), ExtResource("12_v2gni"), ExtResource("5_47rga")])
 sprite = NodePath("Control/textrue")
 slider = NodePath("Control/HSlider")
+objectToShow = [NodePath("Control/GameLabel"), NodePath("Control/HSlider")]
+finishButton = NodePath("Control/GameButton")
 
 [node name="Control" type="Control" parent="SecondChallenge"]
 layout_mode = 3
@@ -115,11 +122,11 @@ offset_bottom = 657.0
 
 [node name="GameLabel" parent="SecondChallenge/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
-offset_left = 155.0
+offset_left = 82.0
 offset_top = 147.0
-offset_right = 1057.0
+offset_right = 1061.0
 offset_bottom = 190.0
-text = "Adjust the slider until you see your reflection"
+text = "Adjust the slider until you can see your reflection"
 
 [node name="HSlider" type="HSlider" parent="SecondChallenge/Control"]
 layout_mode = 0
@@ -134,6 +141,7 @@ position = Vector2(577, 358)
 scale = Vector2(0.5, 0.5)
 
 [node name="GameButton" parent="SecondChallenge/Control" instance=ExtResource("2_ly6xb")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 370.0
 offset_top = 564.0
