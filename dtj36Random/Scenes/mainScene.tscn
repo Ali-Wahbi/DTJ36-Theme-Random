@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj3bsk4t771mp"]
+[gd_scene load_steps=15 format=3 uid="uid://cj3bsk4t771mp"]
 
 [ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_2c717"]
 [ext_resource type="Script" uid="uid://beu8ngo0bwyml" path="res://Scripts/first_challenge.gd" id="1_hewda"]
@@ -13,16 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://bvsfdiqqiapsr" path="res://Assets/Faces/faces (5).jpg" id="10_08630"]
 [ext_resource type="Texture2D" uid="uid://by3u1pa2hlxro" path="res://Assets/Faces/faces (6).png" id="11_4djc3"]
 [ext_resource type="Texture2D" uid="uid://g52gdoxqbl78" path="res://Assets/Faces/REFLECTION-TEXT1.PNG" id="12_v2gni"]
+[ext_resource type="Script" uid="uid://ccwhr3gfugqlf" path="res://Scripts/title.gd" id="14_0bgj2"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challgeOne", "challgeTwo", "bg")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "title", "bg")]
 script = ExtResource("1_m8nr8")
-challgeOne = NodePath("FirstChallenge")
-challgeTwo = NodePath("SecondChallenge")
+challengeOne = NodePath("FirstChallenge")
+challengeTwo = NodePath("SecondChallenge")
+title = NodePath("Title")
 bg = NodePath("Control/ColorRect")
-challgeOneBG = Color(0.024000006, 0, 0.06, 1)
-challgeTwoBG = Color(0.043999985, 0, 0.06, 1)
-challgeThreeBG = Color(0.06, 0, 0.056, 1)
-challgeFourBG = Color(0.06, 0, 0.03600002, 1)
+challengeOneBG = Color(0.023529412, 0, 0.05882353, 1)
+challengeTwoBG = Color(0.043999985, 0, 0.06, 1)
+titleBG = Color(0.06, 0, 0.056, 1)
+challengeThreeBG = Color(0.06, 0, 0.03600002, 1)
+challengeFourBG = Color(0.06, 0, 0.015999984, 1)
+challengeOneDelay = 0.7
+challengeTwoDelay = 1.0
+titleDelay = 0.9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -49,6 +55,7 @@ size_flags_horizontal = 3
 color = Color(0.003999996, 0, 0.06, 1)
 
 [node name="FirstChallenge" type="Node2D" parent="." node_paths=PackedStringArray("numberLabel", "showLabel", "resultLabel", "objectToShow")]
+visible = false
 script = ExtResource("1_hewda")
 numberLabel = NodePath("Control/GameLabel-Number")
 showLabel = NodePath("Control/GameLabel-Number2")
@@ -107,6 +114,7 @@ offset_bottom = 546.0
 text = ""
 
 [node name="SecondChallenge" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "slider", "objectToShow", "finishButton")]
+visible = false
 script = ExtResource("5_yyxd1")
 texturesForReflection = Array[Texture]([ExtResource("6_so5kr"), ExtResource("7_0bgj2"), ExtResource("8_oy1pr"), ExtResource("9_uu6ay"), ExtResource("10_08630"), ExtResource("11_4djc3"), ExtResource("12_v2gni"), ExtResource("5_47rga")])
 sprite = NodePath("Control/textrue")
@@ -148,6 +156,59 @@ offset_top = 564.0
 offset_right = 754.0
 offset_bottom = 607.0
 text = "That's my reflection"
+
+[node name="Title" type="Node2D" parent="." node_paths=PackedStringArray("firstLabel", "secondLabel", "thirdLabel", "foarthLabel")]
+visible = false
+script = ExtResource("14_0bgj2")
+firstLabel = NodePath("Control/named")
+secondLabel = NodePath("Control/notA")
+thirdLabel = NodePath("Control/game")
+foarthLabel = NodePath("Control/fin")
+
+[node name="Control" type="Control" parent="Title"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="notA" parent="Title/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 213.0
+offset_right = 501.0
+offset_bottom = 256.0
+text = "Not A"
+
+[node name="named" parent="Title/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 219.0
+offset_right = 779.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 128
+text = "NAMED"
+
+[node name="game" parent="Title/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 337.0
+offset_right = 779.0
+offset_bottom = 507.0
+theme_override_font_sizes/font_size = 64
+text = "Game"
+
+[node name="fin" parent="Title/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 357.0
+offset_right = 940.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 24
+text = "Didn't Find One"
 
 [connection signal="pressed" from="FirstChallenge/Control/GameButton" to="FirstChallenge" method="_on_game_button_pressed"]
 [connection signal="value_changed" from="SecondChallenge/Control/HSlider" to="SecondChallenge" method="_on_h_slider_value_changed"]
