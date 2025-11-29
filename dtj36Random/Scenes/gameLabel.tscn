@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bejxgj2nq3fkv"]
+
+[ext_resource type="FontFile" uid="uid://b1lfpo6dy47hs" path="res://Assets/Fonts/static/JetBrainsMono-Bold.ttf" id="1_3j31o"]
+
+[node name="GameLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_3j31o")
+theme_override_font_sizes/font_size = 32
+text = "Game Label here"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqph0wrexku5p"]
+
+[ext_resource type="FontFile" uid="uid://b1lfpo6dy47hs" path="res://Assets/Fonts/static/JetBrainsMono-Bold.ttf" id="1_6o6by"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6o6by"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v7ds7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f70kx"]
+
+[node name="GameButton" type="Button"]
+offset_left = -117.0
+offset_top = -32.0
+offset_right = 171.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_6o6by")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6o6by")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v7ds7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f70kx")
+text = "Text Goes here "
+flat = true
