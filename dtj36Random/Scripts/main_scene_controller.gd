@@ -73,7 +73,7 @@ func tweenBG(color: Color, duration: float = 3.5):
 
 func onChallengeOneDone():
 	print("Challenge one done")
-	await _create_timer(1)
+	await _create_timer(3)
 	challengeOne.hideAllObjects(true)
 	await challengeOne.allObjectsHidden
 	startChallengeTwo()
@@ -81,14 +81,14 @@ func onChallengeOneDone():
 
 func onChallengeTwoDone():
 	print("Challenge two done")
-	await _create_timer(1)
+	await _create_timer(3)
 	challengeTwo.hideAllObjects(true)
 	await challengeTwo.allObjectsHidden
 	startTitle()
 
 func onTitleDone():
 	print("Title done")
-	await _create_timer(1)
+	await _create_timer(2)
 	title.hideAllObjects()
 	await title.allObjectsHidden
 	# startChallengeOne()
