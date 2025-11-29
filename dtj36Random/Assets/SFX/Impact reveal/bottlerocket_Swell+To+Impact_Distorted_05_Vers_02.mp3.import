@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr0frea00duko"
+path="res://.godot/imported/bottlerocket_Swell+To+Impact_Distorted_05_Vers_02.mp3-bc941ba3faab430b86e3719227b85b9a.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Impact reveal/bottlerocket_Swell+To+Impact_Distorted_05_Vers_02.mp3"
+dest_files=["res://.godot/imported/bottlerocket_Swell+To+Impact_Distorted_05_Vers_02.mp3-bc941ba3faab430b86e3719227b85b9a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
