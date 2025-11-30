@@ -58,7 +58,7 @@ func hideAllChallenges():
 	challengeThree.visible = false
 	challengeFour.visible = false
 	challengeFive.visible = false
-	# challengeSix.visible = false
+	challengeSix.visible = false
 	# challengeSeven.visible = false
 	title.visible = false
 
@@ -131,6 +131,7 @@ func setupSignals():
 	challengeThree.challengeIsDone.connect(onChallengeThreeDone)
 	challengeFour.challengeIsDone.connect(onChallengeFourDone)
 	challengeFive.challengeIsDone.connect(onChallengeFiveDone)
+	challengeSix.challengeIsDone.connect(onChallengeSixDone)
 	title.challengeIsDone.connect(onTitleDone)
 
 
@@ -195,6 +196,25 @@ func onChallengeFiveDone():
 	challengeFive.hideFinalLabel()
 
 	await _create_timer(0.5)
+	startChallengeSix()
+
+func onChallengeSixDone():
+	if isChallengeSixDone:
+		return
+	isChallengeSixDone = true
+	print("Challenge Six done")
+	
+	await _create_timer(0.5)
+	challengeSix.hideAllObjects(true)
+
+	await challengeSix.allObjectsHidden
+	challengeSix.showFinalLabel()
+
+	await _create_timer(2)
+	challengeSix.hideFinalLabel()
+
+	await _create_timer(0.5)
+	# startChallengeSix()
 	
 
 func onTitleDone():

@@ -19,13 +19,14 @@
 [ext_resource type="Script" uid="uid://cnt2v7l85jmht" path="res://Scripts/fifth_challenge.gd" id="17_08630"]
 [ext_resource type="Script" uid="uid://cwqdroy74qc70" path="res://Scripts/sixth_challenge.gd" id="18_4djc3"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "title", "bg")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "challengeSix", "title", "bg")]
 script = ExtResource("1_m8nr8")
 challengeOne = NodePath("FirstChallenge")
 challengeTwo = NodePath("SecondChallenge")
 challengeThree = NodePath("ThirdChallenge")
 challengeFour = NodePath("FourthChallenge")
 challengeFive = NodePath("FifthChallenge")
+challengeSix = NodePath("SixthChallenge")
 title = NodePath("Title")
 bg = NodePath("Control/ColorRect")
 challengeOneBG = Color(0.023529412, 0, 0.05882353, 1)
@@ -489,8 +490,16 @@ layout_mode = 2
 text = "     "
 horizontal_alignment = 1
 
-[node name="SixthChallenge" type="Node2D" parent="."]
+[node name="SixthChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "correctButton", "leftButton", "midButton", "rightButton", "confirmButton", "resultLabel", "realChallengeLabel")]
 script = ExtResource("18_4djc3")
+gameLabel = NodePath("Control2/GameLabel")
+correctButton = NodePath("Control2/Correct")
+leftButton = NodePath("Control2/HBoxContainer/left")
+midButton = NodePath("Control2/HBoxContainer/mid")
+rightButton = NodePath("Control2/HBoxContainer/right")
+confirmButton = NodePath("Control2/VBoxContainer/GameButton4")
+resultLabel = NodePath("Control2/VBoxContainer/resultLabel")
+realChallengeLabel = NodePath("Control2/Challenge")
 
 [node name="Control2" type="Control" parent="SixthChallenge"]
 layout_mode = 3
@@ -505,12 +514,12 @@ grow_vertical = 2
 [node name="Challenge" parent="SixthChallenge/Control2" instance=ExtResource("1_2c717")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 19.0
+offset_left = -10.0
 offset_top = 132.0
-offset_right = 1186.0
+offset_right = 1157.0
 offset_bottom = 472.0
-theme_override_font_sizes/normal_font_size = 128
-text = "The Real 
+theme_override_font_sizes/normal_font_size = 112
+text = "But The Real Real
 Challenge is..."
 horizontal_alignment = 1
 
@@ -546,6 +555,7 @@ offset_right = 921.0
 offset_bottom = 335.0
 
 [node name="left" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
@@ -553,7 +563,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
-text = "Yellow"
+text = "Red"
 
 [node name="mid" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
 layout_mode = 2
@@ -566,6 +576,7 @@ theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="right" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(0, 1, 0.049999952, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
@@ -573,7 +584,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
-text = "Yellow"
+text = "Green"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SixthChallenge/Control2"]
 layout_mode = 0
@@ -609,4 +620,7 @@ horizontal_alignment = 1
 [connection signal="pressed" from="FifthChallenge/Control2/HBoxContainer/yellow3" to="FifthChallenge" method="_on_yellow_right_pressed"]
 [connection signal="pressed" from="FifthChallenge/Control2/VBoxContainer/GameButton4" to="FifthChallenge" method="_on_game_button_4_pressed"]
 [connection signal="pressed" from="SixthChallenge/Control2/Correct" to="SixthChallenge" method="_on_correct_pressed"]
+[connection signal="pressed" from="SixthChallenge/Control2/HBoxContainer/left" to="SixthChallenge" method="_on_left_pressed"]
+[connection signal="pressed" from="SixthChallenge/Control2/HBoxContainer/mid" to="SixthChallenge" method="_on_mid_pressed"]
+[connection signal="pressed" from="SixthChallenge/Control2/HBoxContainer/right" to="SixthChallenge" method="_on_right_pressed"]
 [connection signal="pressed" from="SixthChallenge/Control2/VBoxContainer/GameButton4" to="SixthChallenge" method="_on_game_button_4_pressed"]
