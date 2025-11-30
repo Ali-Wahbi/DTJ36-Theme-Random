@@ -25,10 +25,11 @@ func _on_h_slider_value_changed(_value: float) -> void:
 	randomizeSprite()
 
 func randomizeSprite():
-	if sprite.texture == null:
-		tweenFade(sprite, 0, 1, 0.3)
+	# if sprite.texture == null:
 	var index = randi_range(0, texturesForReflection.size() - 1)
+	await tweenFade(sprite, 1, 0, 0.2)
 	sprite.texture = texturesForReflection[index]
+	tweenFade(sprite, 0, 1, 0.1)
 
 
 func _create_timer(time: float = 0) -> Signal:
@@ -57,9 +58,12 @@ func hideAllObjects(finishButtonIncluded: bool = false, duration: float = 0.5) -
 	
 	allObjectsHidden.emit()
 
+var tween: Tween
+func tweenFade(object: CanvasItem, from: float, to: float, duration: float, killTween: bool = false) -> Signal:
+	if tween and killTween:
+		tween.kill()
 
-func tweenFade(object: CanvasItem, from: float, to: float, duration: float) -> Signal:
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	object.modulate.a = from
 	tween.tween_property(object, "modulate:a", to, duration)
 	return tween.finished
@@ -72,4 +76,4 @@ func showFinishButton():
 	if finishButtonShown:
 		return
 	finishButtonShown = true
-	tweenFade(finishButton, 0, 1, 0.7)
+	tweenFade(finishButton, 0, 1, 0.7, true)

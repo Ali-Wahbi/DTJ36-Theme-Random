@@ -59,7 +59,6 @@ size_flags_horizontal = 3
 color = Color(0.003999996, 0, 0.06, 1)
 
 [node name="FirstChallenge" type="Node2D" parent="." node_paths=PackedStringArray("numberLabel", "showLabel", "resultLabel", "objectToShow")]
-visible = false
 script = ExtResource("1_hewda")
 numberLabel = NodePath("Control/GameLabel-Number")
 showLabel = NodePath("Control/GameLabel-Number2")
@@ -111,11 +110,12 @@ text = "Click Me"
 
 [node name="GameLabel-result" parent="FirstChallenge/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
-offset_left = 278.0
+offset_left = 113.0
 offset_top = 503.0
-offset_right = 279.0
+offset_right = 1061.0
 offset_bottom = 546.0
 text = ""
+horizontal_alignment = 1
 
 [node name="SecondChallenge" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "slider", "objectToShow", "finishButton")]
 visible = false

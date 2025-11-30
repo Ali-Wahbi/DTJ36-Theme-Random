@@ -93,7 +93,7 @@ func onChallengeOneDone():
 		return
 	isChallengeOneDone = true
 	print("Challenge one done")
-	await _create_timer(2)
+	await _create_timer(1)
 	challengeOne.hideAllObjects(true)
 	await challengeOne.allObjectsHidden
 	startChallengeTwo()
@@ -104,7 +104,7 @@ func onChallengeTwoDone():
 		return
 	isChallengeTwoDone = true
 	print("Challenge two done")
-	await _create_timer(2)
+	await _create_timer(1)
 	challengeTwo.hideAllObjects(true)
 	await challengeTwo.allObjectsHidden
 	startTitle()
@@ -124,7 +124,7 @@ func onTitleDone():
 		return
 	isTitleDone = true
 	print("Title done")
-	await _create_timer(2)
+	await _create_timer(1)
 	title.hideAllObjects()
 	await title.allObjectsHidden
 	startChallengeThree()
