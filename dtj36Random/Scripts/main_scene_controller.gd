@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name MusicAndSfxPlayer
 @export var challengeOne: Node2D
 @export var challengeTwo: Node2D
 @export var challengeThree: Node2D
@@ -69,6 +69,7 @@ func hideAllChallenges():
 
 
 func startChallengeOne():
+	MusicPlayer.musicSFXPlayer.playNormalSlowMusic()
 	print("Starting challenge one")
 	challengeOne.visible = true
 	tweenBG(challengeOneBG)
@@ -113,6 +114,7 @@ func startChallengeSix():
 
 
 func startChallengeSeven():
+	MusicPlayer.musicSFXPlayer.playNormalFastMusic()
 	print("Starting challenge 7")
 	challengeSeven.visible = true
 	tweenBG(challengeSevenBG)
@@ -149,6 +151,7 @@ func tweenBG(color: Color, duration: float = 3.5):
 func onChallengeOneDone():
 	if isChallengeOneDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeOneDone = true
 	print("Challenge one done")
 	await _create_timer(2)
@@ -160,6 +163,7 @@ func onChallengeOneDone():
 func onChallengeTwoDone():
 	if isChallengeTwoDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeTwoDone = true
 	print("Challenge two done")
 	await _create_timer(1)
@@ -170,6 +174,7 @@ func onChallengeTwoDone():
 func onChallengeThreeDone():
 	if isChallengeThreeDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeThreeDone = true
 	print("Challenge three done")
 	await _create_timer(1)
@@ -180,6 +185,7 @@ func onChallengeThreeDone():
 func onChallengeFourDone():
 	if isChallengeFourDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeFourDone = true
 	print("Challenge Four done")
 	await _create_timer(0.5)
@@ -190,6 +196,7 @@ func onChallengeFourDone():
 func onChallengeFiveDone():
 	if isChallengeFiveDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeFiveDone = true
 	print("Challenge Five done")
 	
@@ -208,6 +215,7 @@ func onChallengeFiveDone():
 func onChallengeSixDone():
 	if isChallengeSixDone:
 		return
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	isChallengeSixDone = true
 	print("Challenge Six done")
 	
@@ -228,6 +236,7 @@ func onChallengeSevenDone(score: int):
 	if isChallengeSevenDone:
 		return
 
+	MusicPlayer.musicSFXPlayer.playRevealSounds()
 	finalScore = score
 	isChallengeSevenDone = true
 	print("Challenge Seven done")
@@ -253,6 +262,7 @@ func onTitleDone():
 
 
 func showFinale():
+	MusicPlayer.musicSFXPlayer.playImpactRevealNormal()
 	finale.visible = true
 	playerTexture = challengeTwo.getTexture()
 	finale.showAllObjects(finalScore, playerTexture)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj3bsk4t771mp"]
+[gd_scene load_steps=32 format=3 uid="uid://cj3bsk4t771mp"]
 
 [ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_2c717"]
 [ext_resource type="Script" uid="uid://beu8ngo0bwyml" path="res://Scripts/first_challenge.gd" id="1_hewda"]
@@ -20,6 +20,17 @@
 [ext_resource type="Script" uid="uid://cwqdroy74qc70" path="res://Scripts/sixth_challenge.gd" id="18_4djc3"]
 [ext_resource type="PackedScene" uid="uid://jtgqumhn2o4a" path="res://Scenes/input_keyboard.tscn" id="19_v2gni"]
 [ext_resource type="Script" uid="uid://c60g84ehlm1jk" path="res://Scripts/finale.gd" id="20_ekaqe"]
+[ext_resource type="Script" uid="uid://bip6xcgkj4fmu" path="res://Scripts/musicSfxPlayer.gd" id="21_5bsxs"]
+[ext_resource type="AudioStream" uid="uid://bon7nfjcifix8" path="res://Assets/SFX/MagicalReveal/magical_reveal1.mp3" id="22_eol8w"]
+[ext_resource type="AudioStream" uid="uid://cjyvahlxu2cyc" path="res://Assets/SFX/MagicalReveal/magical_reveal2.mp3" id="23_daoup"]
+[ext_resource type="AudioStream" uid="uid://jybiuw6b1g2v" path="res://Assets/SFX/MagicalReveal/magical_reveal3.mp3" id="24_bofyi"]
+[ext_resource type="AudioStream" uid="uid://dun0ij2in3rss" path="res://Assets/SFX/MagicalReveal/magical_reveal4.mp3" id="25_boirm"]
+[ext_resource type="AudioStream" uid="uid://dr0frea00duko" path="res://Assets/SFX/Impact reveal/bottlerocket_Swell+To+Impact_Distorted_05_Vers_02.mp3" id="26_7ew7i"]
+[ext_resource type="AudioStream" uid="uid://c0dhwf448k6we" path="res://Assets/SFX/Impact reveal/bottlerocket_Swell+To+Impact_Flanged+Swell_02.mp3" id="27_wrx63"]
+[ext_resource type="AudioStream" uid="uid://bynwlowgysl50" path="res://Assets/SFX/music.mp3" id="28_7ew7i"]
+[ext_resource type="AudioStream" uid="uid://byop613vvbq60" path="res://Assets/SFX/FastBeats/music_orlamusic_Epic+003.mp3" id="29_wrx63"]
+[ext_resource type="AudioStream" uid="uid://dk534aevtoroa" path="res://Assets/SFX/FastBeats/music_orlamusic_Epic+004.mp3" id="30_uh2eo"]
+[ext_resource type="AudioStream" uid="uid://denni2pnl3kap" path="res://Assets/SFX/FastBeats/music_orlamusic_Epic+005.mp3" id="31_mqfxr"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "challengeSix", "challengeSeven", "title", "finale", "bg")]
 script = ExtResource("1_m8nr8")
@@ -608,6 +619,22 @@ offset_right = 906.0
 offset_bottom = 539.0
 theme_override_font_sizes/normal_font_size = 24
 text = "I Scored 31 btw."
+
+[node name="MusicAndSfxPlayer" type="Node2D" parent="." node_paths=PackedStringArray("sfxPlayer", "musicPlayer") groups=["musicSfxPlayer"]]
+script = ExtResource("21_5bsxs")
+sfxPlayer = NodePath("SfxStreamPlayer")
+musicPlayer = NodePath("MusicStreamPlayer")
+revealEffects = Array[AudioStream]([ExtResource("22_eol8w"), ExtResource("23_daoup"), ExtResource("24_bofyi"), ExtResource("25_boirm")])
+impactRevealNormal = ExtResource("26_7ew7i")
+impactRevealStrong = ExtResource("27_wrx63")
+musicSlowNormal = ExtResource("28_7ew7i")
+musicFastNormal = ExtResource("29_wrx63")
+musicFastHard = ExtResource("30_uh2eo")
+musicFastInsane = ExtResource("31_mqfxr")
+
+[node name="SfxStreamPlayer" type="AudioStreamPlayer2D" parent="MusicAndSfxPlayer"]
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="MusicAndSfxPlayer"]
 
 [connection signal="pressed" from="FirstChallenge/Control/GameButton" to="FirstChallenge" method="_on_game_button_pressed"]
 [connection signal="value_changed" from="SecondChallenge/Control/HSlider" to="SecondChallenge" method="_on_h_slider_value_changed"]

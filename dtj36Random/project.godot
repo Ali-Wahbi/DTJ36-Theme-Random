@@ -14,3 +14,11 @@ config/name="DTJ36-Random"
 run/main_scene="uid://cj3bsk4t771mp"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MusicPlayer="*res://Scripts/musicPlayer.gd"
+
+[global_group]
+
+musicSfxPlayer=""
