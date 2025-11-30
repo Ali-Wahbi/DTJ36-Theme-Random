@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cj3bsk4t771mp"]
+[gd_scene load_steps=19 format=3 uid="uid://cj3bsk4t771mp"]
 
 [ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_2c717"]
 [ext_resource type="Script" uid="uid://beu8ngo0bwyml" path="res://Scripts/first_challenge.gd" id="1_hewda"]
@@ -15,12 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://g52gdoxqbl78" path="res://Assets/Faces/REFLECTION-TEXT1.PNG" id="12_v2gni"]
 [ext_resource type="Script" uid="uid://ccwhr3gfugqlf" path="res://Scripts/title.gd" id="14_0bgj2"]
 [ext_resource type="Script" uid="uid://dbagrinubyeyy" path="res://Scripts/third_challenge.gd" id="15_oy1pr"]
+[ext_resource type="Script" uid="uid://cbvctah1vda0n" path="res://Scripts/fourth_challenge.gd" id="16_uu6ay"]
+[ext_resource type="Script" uid="uid://cnt2v7l85jmht" path="res://Scripts/fifth_challenge.gd" id="17_08630"]
+[ext_resource type="Script" uid="uid://cwqdroy74qc70" path="res://Scripts/sixth_challenge.gd" id="18_4djc3"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "title", "bg")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "title", "bg")]
 script = ExtResource("1_m8nr8")
 challengeOne = NodePath("FirstChallenge")
 challengeTwo = NodePath("SecondChallenge")
 challengeThree = NodePath("ThirdChallenge")
+challengeFour = NodePath("FourthChallenge")
+challengeFive = NodePath("FifthChallenge")
 title = NodePath("Title")
 bg = NodePath("Control/ColorRect")
 challengeOneBG = Color(0.023529412, 0, 0.05882353, 1)
@@ -35,7 +40,6 @@ challengeFourDelay = 0.5
 titleDelay = 0.9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -59,6 +63,7 @@ size_flags_horizontal = 3
 color = Color(0.003999996, 0, 0.06, 1)
 
 [node name="FirstChallenge" type="Node2D" parent="." node_paths=PackedStringArray("numberLabel", "showLabel", "resultLabel", "objectToShow")]
+visible = false
 script = ExtResource("1_hewda")
 numberLabel = NodePath("Control/GameLabel-Number")
 showLabel = NodePath("Control/GameLabel-Number2")
@@ -302,6 +307,292 @@ layout_mode = 2
 text = "     "
 horizontal_alignment = 1
 
+[node name="FourthChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "redButton", "yellowButton", "blueButton", "confirmButton", "resultLabel")]
+visible = false
+script = ExtResource("16_uu6ay")
+gameLabel = NodePath("Control2/GameLabel")
+redButton = NodePath("Control2/HBoxContainer/red")
+yellowButton = NodePath("Control2/HBoxContainer/yellow")
+blueButton = NodePath("Control2/HBoxContainer/blue")
+confirmButton = NodePath("Control2/VBoxContainer/GameButton4")
+resultLabel = NodePath("Control2/VBoxContainer/resultLabel")
+
+[node name="Control2" type="Control" parent="FourthChallenge"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameLabel" parent="FourthChallenge/Control2" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 181.0
+offset_right = 927.0
+offset_bottom = 224.0
+text = "Choose the [color=blue]Blue[/color] one of the following"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FourthChallenge/Control2"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 269.0
+offset_right = 921.0
+offset_bottom = 335.0
+
+[node name="red" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.089999974, 0.089999974, 1)
+theme_override_colors/font_pressed_color = Color(0.84, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.09019608, 0.09019608, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8392157, 0, 0, 1)
+text = "Yellow"
+
+[node name="yellow" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Blue"
+
+[node name="blue" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
+theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
+text = "Red"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FourthChallenge/Control2"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 391.0
+offset_right = 727.0
+offset_bottom = 580.0
+
+[node name="GameButton4" parent="FourthChallenge/Control2/VBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="resultLabel" parent="FourthChallenge/Control2/VBoxContainer" instance=ExtResource("1_2c717")]
+layout_mode = 2
+text = "     "
+horizontal_alignment = 1
+
+[node name="FifthChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "redButton", "yellowButton", "blueButton", "confirmButton", "resultLabel", "realChallengeLabel")]
+visible = false
+script = ExtResource("17_08630")
+gameLabel = NodePath("Control2/GameLabel")
+redButton = NodePath("Control2/HBoxContainer/yellow")
+yellowButton = NodePath("Control2/HBoxContainer/yellow2")
+blueButton = NodePath("Control2/HBoxContainer/yellow3")
+confirmButton = NodePath("Control2/VBoxContainer/GameButton4")
+resultLabel = NodePath("Control2/VBoxContainer/resultLabel")
+realChallengeLabel = NodePath("Control2/Challenge")
+
+[node name="Control2" type="Control" parent="FifthChallenge"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Challenge" parent="FifthChallenge/Control2" instance=ExtResource("1_2c717")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 132.0
+offset_right = 1186.0
+offset_bottom = 472.0
+theme_override_font_sizes/normal_font_size = 128
+text = "The Real 
+Challenge is..."
+horizontal_alignment = 1
+
+[node name="GameLabel" parent="FifthChallenge/Control2" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 181.0
+offset_right = 927.0
+offset_bottom = 224.0
+text = "Choose the most Yellow-ish one"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FifthChallenge/Control2"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 269.0
+offset_right = 921.0
+offset_bottom = 335.0
+
+[node name="yellow" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="yellow2" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="yellow3" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FifthChallenge/Control2"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 391.0
+offset_right = 727.0
+offset_bottom = 580.0
+
+[node name="GameButton4" parent="FifthChallenge/Control2/VBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="resultLabel" parent="FifthChallenge/Control2/VBoxContainer" instance=ExtResource("1_2c717")]
+layout_mode = 2
+text = "     "
+horizontal_alignment = 1
+
+[node name="SixthChallenge" type="Node2D" parent="."]
+script = ExtResource("18_4djc3")
+
+[node name="Control2" type="Control" parent="SixthChallenge"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Challenge" parent="SixthChallenge/Control2" instance=ExtResource("1_2c717")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 132.0
+offset_right = 1186.0
+offset_bottom = 472.0
+theme_override_font_sizes/normal_font_size = 128
+text = "The Real 
+Challenge is..."
+horizontal_alignment = 1
+
+[node name="GameLabel" parent="SixthChallenge/Control2" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 181.0
+offset_right = 927.0
+offset_bottom = 224.0
+text = "Choose the 		one"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Correct" parent="SixthChallenge/Control2" instance=ExtResource("2_ly6xb")]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 181.0
+offset_right = 711.0
+offset_bottom = 224.0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
+theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
+text = "Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SixthChallenge/Control2"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 269.0
+offset_right = 921.0
+offset_bottom = 335.0
+
+[node name="left" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="mid" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="right" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SixthChallenge/Control2"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 391.0
+offset_right = 727.0
+offset_bottom = 580.0
+
+[node name="GameButton4" parent="SixthChallenge/Control2/VBoxContainer" instance=ExtResource("2_ly6xb")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="resultLabel" parent="SixthChallenge/Control2/VBoxContainer" instance=ExtResource("1_2c717")]
+layout_mode = 2
+text = "     "
+horizontal_alignment = 1
+
 [connection signal="pressed" from="FirstChallenge/Control/GameButton" to="FirstChallenge" method="_on_game_button_pressed"]
 [connection signal="value_changed" from="SecondChallenge/Control/HSlider" to="SecondChallenge" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="SecondChallenge/Control/GameButton" to="SecondChallenge" method="_on_game_button_pressed"]
@@ -309,3 +600,13 @@ horizontal_alignment = 1
 [connection signal="pressed" from="ThirdChallenge/Control2/HBoxContainer/yellow" to="ThirdChallenge" method="_on_yellow_pressed"]
 [connection signal="pressed" from="ThirdChallenge/Control2/HBoxContainer/blue" to="ThirdChallenge" method="_on_blue_pressed"]
 [connection signal="pressed" from="ThirdChallenge/Control2/VBoxContainer/GameButton4" to="ThirdChallenge" method="_on_game_button_4_pressed"]
+[connection signal="pressed" from="FourthChallenge/Control2/HBoxContainer/red" to="FourthChallenge" method="_on_red_pressed"]
+[connection signal="pressed" from="FourthChallenge/Control2/HBoxContainer/yellow" to="FourthChallenge" method="_on_yellow_pressed"]
+[connection signal="pressed" from="FourthChallenge/Control2/HBoxContainer/blue" to="FourthChallenge" method="_on_blue_pressed"]
+[connection signal="pressed" from="FourthChallenge/Control2/VBoxContainer/GameButton4" to="FourthChallenge" method="_on_game_button_4_pressed"]
+[connection signal="pressed" from="FifthChallenge/Control2/HBoxContainer/yellow" to="FifthChallenge" method="_on_yellow_left_pressed"]
+[connection signal="pressed" from="FifthChallenge/Control2/HBoxContainer/yellow2" to="FifthChallenge" method="_on_yellow_mid_pressed"]
+[connection signal="pressed" from="FifthChallenge/Control2/HBoxContainer/yellow3" to="FifthChallenge" method="_on_yellow_right_pressed"]
+[connection signal="pressed" from="FifthChallenge/Control2/VBoxContainer/GameButton4" to="FifthChallenge" method="_on_game_button_4_pressed"]
+[connection signal="pressed" from="SixthChallenge/Control2/Correct" to="SixthChallenge" method="_on_correct_pressed"]
+[connection signal="pressed" from="SixthChallenge/Control2/VBoxContainer/GameButton4" to="SixthChallenge" method="_on_game_button_4_pressed"]

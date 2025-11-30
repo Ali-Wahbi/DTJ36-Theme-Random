@@ -4,6 +4,9 @@ extends Node2D
 @export var challengeTwo: Node2D
 @export var challengeThree: Node2D
 @export var challengeFour: Node2D
+@export var challengeFive: Node2D
+@export var challengeSix: Node2D
+@export var challengeSeven: Node2D
 @export var title: Node2D
 
 
@@ -14,6 +17,9 @@ extends Node2D
 @export var titleBG: Color
 @export var challengeThreeBG: Color
 @export var challengeFourBG: Color
+@export var challengeFiveBG: Color
+@export var challengeSixBG: Color
+@export var challengeSevenBG: Color
 
 
 @export_group("Challenges Delays")
@@ -21,12 +27,19 @@ extends Node2D
 @export var challengeTwoDelay: float
 @export var challengeThreeDelay: float
 @export var challengeFourDelay: float
+@export var challengeFiveDelay: float
+@export var challengeSixDelay: float
+@export var challengeSevenDelay: float
 @export var titleDelay: float
 
 var isChallengeOneDone: bool = false
 var isChallengeTwoDone: bool = false
 var isChallengeThreeDone: bool = false
 var isChallengeFourDone: bool = false
+var isChallengeFiveDone: bool = false
+var isChallengeSixDone: bool = false
+var isChallengeSevenDone: bool = false
+
 var isTitleDone: bool = false
 
 
@@ -35,13 +48,18 @@ func _ready() -> void:
 	hideAllChallenges()
 	setupSignals()
 	
-	startChallengeOne()
+	# startChallengeOne()
+	startChallengeFour()
 
 
 func hideAllChallenges():
 	challengeOne.visible = false
 	challengeTwo.visible = false
 	challengeThree.visible = false
+	challengeFour.visible = false
+	challengeFive.visible = false
+	# challengeSix.visible = false
+	# challengeSeven.visible = false
 	title.visible = false
 
 
@@ -60,11 +78,41 @@ func startChallengeTwo():
 	challengeTwo.showAllObjects()
 
 func startChallengeThree():
-	print("Starting challenge two")
+	print("Starting challenge three")
 	challengeThree.visible = true
 	tweenBG(challengeThreeBG)
 	await _create_timer(challengeThreeDelay)
 	challengeThree.showAllObjects()
+
+func startChallengeFour():
+	print("Starting challenge four")
+	challengeFour.visible = true
+	tweenBG(challengeFourBG)
+	await _create_timer(challengeFourDelay)
+	challengeFour.showAllObjects()
+
+
+func startChallengeFive():
+	print("Starting challenge 5")
+	challengeFive.visible = true
+	tweenBG(challengeFiveBG)
+	await _create_timer(challengeFiveDelay)
+	challengeFive.showAllObjects()
+
+func startChallengeSix():
+	print("Starting challenge 6")
+	challengeSix.visible = true
+	tweenBG(challengeSixBG)
+	await _create_timer(challengeSixDelay)
+	challengeSix.showAllObjects()
+
+
+func startChallengeSeven():
+	print("Starting challenge 7")
+	challengeSeven.visible = true
+	tweenBG(challengeSevenBG)
+	await _create_timer(challengeSevenDelay)
+	challengeSeven.showAllObjects()
 
 func startTitle():
 	print("Starting title")
@@ -81,6 +129,8 @@ func setupSignals():
 	challengeOne.challengeIsDone.connect(onChallengeOneDone)
 	challengeTwo.challengeIsDone.connect(onChallengeTwoDone)
 	challengeThree.challengeIsDone.connect(onChallengeThreeDone)
+	challengeFour.challengeIsDone.connect(onChallengeFourDone)
+	challengeFive.challengeIsDone.connect(onChallengeFiveDone)
 	title.challengeIsDone.connect(onTitleDone)
 
 
@@ -117,7 +167,35 @@ func onChallengeThreeDone():
 	await _create_timer(1)
 	challengeThree.hideAllObjects(true)
 	await challengeThree.allObjectsHidden
-	# startTitle()
+	startChallengeFour()
+
+func onChallengeFourDone():
+	if isChallengeFourDone:
+		return
+	isChallengeFourDone = true
+	print("Challenge Four done")
+	await _create_timer(0.5)
+	challengeFour.hideAllObjects(true)
+	await challengeFour.allObjectsHidden
+	startChallengeFive()
+	
+func onChallengeFiveDone():
+	if isChallengeFiveDone:
+		return
+	isChallengeFiveDone = true
+	print("Challenge Five done")
+	
+	await _create_timer(0.5)
+	challengeFive.hideAllObjects(true)
+
+	await challengeFive.allObjectsHidden
+	challengeFive.showFinalLabel()
+
+	await _create_timer(2)
+	challengeFive.hideFinalLabel()
+
+	await _create_timer(0.5)
+	
 
 func onTitleDone():
 	if isTitleDone:
