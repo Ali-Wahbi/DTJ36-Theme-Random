@@ -38,11 +38,7 @@ challengeTwoBG = Color(0.043999985, 0, 0.06, 1)
 titleBG = Color(0.06, 0, 0.056, 1)
 challengeThreeBG = Color(0.06, 0, 0.03600002, 1)
 challengeFourBG = Color(0.06, 0, 0.015999984, 1)
-challengeOneDelay = 0.7
-challengeTwoDelay = 0.5
-challengeThreeDelay = 0.5
-challengeFourDelay = 0.5
-titleDelay = 0.9
+titleDelay = 0.4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -244,13 +240,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameLabel" parent="ThirdChallenge/Control2" instance=ExtResource("1_2c717")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 254.0
 offset_top = 181.0
 offset_right = 927.0
 offset_bottom = 224.0
-text = "Choose the [color=red]Red[/color] one of the following"
+text = "Choose the [color=d90000]Red[/color] one of the following"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ThirdChallenge/Control2"]
@@ -261,36 +256,21 @@ offset_right = 921.0
 offset_bottom = 335.0
 
 [node name="red" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
-modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0.089999974, 0.089999974, 1)
-theme_override_colors/font_pressed_color = Color(0.84, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0.09019608, 0.09019608, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.8392157, 0, 0, 1)
 text = "Red"
 
 [node name="yellow" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
-modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="blue" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0.73333335, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
-theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
-theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
 text = "Blue"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ThirdChallenge/Control2"]
@@ -301,7 +281,6 @@ offset_right = 727.0
 offset_bottom = 580.0
 
 [node name="GameButton4" parent="ThirdChallenge/Control2/VBoxContainer" instance=ExtResource("2_ly6xb")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -338,7 +317,7 @@ offset_left = 254.0
 offset_top = 181.0
 offset_right = 927.0
 offset_bottom = 224.0
-text = "Choose the [color=blue]Blue[/color] one of the following"
+text = "Choose the [color=00bbff]Blue[/color] one of the following"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FourthChallenge/Control2"]
@@ -349,33 +328,21 @@ offset_right = 921.0
 offset_bottom = 335.0
 
 [node name="red" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0.089999974, 0.089999974, 1)
-theme_override_colors/font_pressed_color = Color(0.84, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0.09019608, 0.09019608, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.8392157, 0, 0, 1)
 text = "Yellow"
 
 [node name="yellow" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Blue"
 
 [node name="blue" parent="FourthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(0, 0.73333335, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
-theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
-theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
 text = "Red"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FourthChallenge/Control2"]
@@ -435,7 +402,7 @@ offset_left = 254.0
 offset_top = 181.0
 offset_right = 927.0
 offset_bottom = 224.0
-text = "Choose the most Yellow-ish one"
+text = "Choose the most [color=ffbb00]Yellow-ish[/color] one"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -447,33 +414,21 @@ offset_right = 921.0
 offset_bottom = 335.0
 
 [node name="yellow" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="yellow2" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="yellow3" parent="FifthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FifthChallenge/Control2"]
@@ -495,7 +450,6 @@ text = "     "
 horizontal_alignment = 1
 
 [node name="SixthChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "correctButton", "leftButton", "midButton", "rightButton", "confirmButton", "resultLabel", "realChallengeLabel")]
-visible = false
 script = ExtResource("18_4djc3")
 gameLabel = NodePath("Control2/GameLabel")
 correctButton = NodePath("Control2/Correct")
@@ -539,17 +493,13 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="Correct" parent="SixthChallenge/Control2" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(0, 0.73333335, 1, 1)
 layout_mode = 0
 offset_left = 607.0
 offset_top = 181.0
 offset_right = 711.0
 offset_bottom = 224.0
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
-theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
-theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
 text = "Blue"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SixthChallenge/Control2"]
@@ -563,32 +513,18 @@ offset_bottom = 335.0
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Red"
 
 [node name="mid" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+self_modulate = Color(1, 0.73333335, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Yellow"
 
 [node name="right" parent="SixthChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
 self_modulate = Color(0, 1, 0.049999952, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
-theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
 text = "Green"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SixthChallenge/Control2"]
@@ -613,12 +549,14 @@ horizontal_alignment = 1
 visible = false
 
 [node name="Finale" type="Node2D" parent="." node_paths=PackedStringArray("youLabel", "scoreLabel", "reflectionSprite", "finaleLabel", "psLabel")]
+visible = false
 script = ExtResource("20_ekaqe")
 youLabel = NodePath("Control/you")
 scoreLabel = NodePath("Control/scoreLabel")
 reflectionSprite = NodePath("Control/reflection")
 finaleLabel = NodePath("Control/fin")
 psLabel = NodePath("Control/scoreLabel2")
+showDelay = 0.3
 
 [node name="Control" type="Control" parent="Finale"]
 layout_mode = 3

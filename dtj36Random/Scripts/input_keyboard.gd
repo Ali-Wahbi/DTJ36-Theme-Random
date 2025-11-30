@@ -178,7 +178,7 @@ func startChallenge():
 	gameStarted = true
 
 func hideChallenge(duration: float = 0.5):
-	tweenFade(self, 1, 0, duration)
+	await tweenFade(self, 1, 0, duration)
 	challengeHidden.emit()
 
 

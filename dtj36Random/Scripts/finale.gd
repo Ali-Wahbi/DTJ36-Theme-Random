@@ -26,7 +26,7 @@ func showAllObjects(score: int, reflection: Texture2D) -> void:
 	print("Finale show all objects")
 	scoreLabel.text = "Scored: " + str(score)
 	reflectionSprite.texture = reflection
-	var duration = 0.25
+	var duration = 0.5
 	
 	youLabel.visible = true
 	reflectionSprite.visible = true

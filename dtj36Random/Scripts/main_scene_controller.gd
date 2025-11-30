@@ -151,7 +151,7 @@ func onChallengeOneDone():
 		return
 	isChallengeOneDone = true
 	print("Challenge one done")
-	await _create_timer(1)
+	await _create_timer(2)
 	challengeOne.hideAllObjects(true)
 	await challengeOne.allObjectsHidden
 	startChallengeTwo()
