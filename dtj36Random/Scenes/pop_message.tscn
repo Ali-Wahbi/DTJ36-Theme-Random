@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://07p4ys0yxd2t"]
+
+[ext_resource type="Script" uid="uid://ce23dq27hx4y2" path="res://Scripts/pop_message.gd" id="1_1on1x"]
+[ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_r2fiu"]
+
+[node name="PopMessage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1on1x")
+YRange = Vector2(135, 290)
+XValues = Vector2(175, 715)
+rotationRange = Vector2(30, -30)
+
+[node name="GameLabel" parent="." instance=ExtResource("1_r2fiu")]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 228.0
+offset_right = 522.0
+offset_bottom = 271.0
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48

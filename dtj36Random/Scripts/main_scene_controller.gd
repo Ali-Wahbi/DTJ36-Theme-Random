@@ -8,6 +8,7 @@ extends Node2D
 @export var challengeSix: Node2D
 @export var challengeSeven: Node2D
 @export var title: Node2D
+@export var finale: Node2D
 
 
 @export_group("BG Colors")
@@ -43,13 +44,16 @@ var isChallengeSevenDone: bool = false
 var isTitleDone: bool = false
 
 
+var finalScore: int
+var playerTexture: Texture2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hideAllChallenges()
 	setupSignals()
 	
-	# startChallengeOne()
-	startChallengeFour()
+	startChallengeOne()
+	# startChallengeSix()
 
 
 func hideAllChallenges():
@@ -59,8 +63,9 @@ func hideAllChallenges():
 	challengeFour.visible = false
 	challengeFive.visible = false
 	challengeSix.visible = false
-	# challengeSeven.visible = false
+	challengeSeven.visible = false
 	title.visible = false
+	finale.visible = false
 
 
 func startChallengeOne():
@@ -112,7 +117,8 @@ func startChallengeSeven():
 	challengeSeven.visible = true
 	tweenBG(challengeSevenBG)
 	await _create_timer(challengeSevenDelay)
-	challengeSeven.showAllObjects()
+	challengeSeven.showChallenge()
+	challengeSeven.gameStarted = true
 
 func startTitle():
 	print("Starting title")
@@ -132,6 +138,7 @@ func setupSignals():
 	challengeFour.challengeIsDone.connect(onChallengeFourDone)
 	challengeFive.challengeIsDone.connect(onChallengeFiveDone)
 	challengeSix.challengeIsDone.connect(onChallengeSixDone)
+	challengeSeven.challengeIsDone.connect(onChallengeSevenDone)
 	title.challengeIsDone.connect(onTitleDone)
 
 
@@ -214,9 +221,26 @@ func onChallengeSixDone():
 	challengeSix.hideFinalLabel()
 
 	await _create_timer(0.5)
-	# startChallengeSix()
-	
+	startChallengeSeven()
 
+
+func onChallengeSevenDone(score: int):
+	if isChallengeSevenDone:
+		return
+
+	finalScore = score
+	isChallengeSevenDone = true
+	print("Challenge Seven done")
+	
+	await _create_timer(0.5)
+	challengeSeven.hideChallenge()
+
+	await challengeSeven.challengeHidden
+
+	await _create_timer(0.5)
+	showFinale()
+
+	
 func onTitleDone():
 	if isTitleDone:
 		return
@@ -226,3 +250,9 @@ func onTitleDone():
 	title.hideAllObjects()
 	await title.allObjectsHidden
 	startChallengeThree()
+
+
+func showFinale():
+	finale.visible = true
+	playerTexture = challengeTwo.getTexture()
+	finale.showAllObjects(finalScore, playerTexture)

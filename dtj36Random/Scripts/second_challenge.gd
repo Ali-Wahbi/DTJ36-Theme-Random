@@ -77,3 +77,6 @@ func showFinishButton():
 		return
 	finishButtonShown = true
 	tweenFade(finishButton, 0, 1, 0.7, true)
+
+func getTexture() -> Texture2D:
+	return sprite.texture

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cj3bsk4t771mp"]
+[gd_scene load_steps=21 format=3 uid="uid://cj3bsk4t771mp"]
 
 [ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_2c717"]
 [ext_resource type="Script" uid="uid://beu8ngo0bwyml" path="res://Scripts/first_challenge.gd" id="1_hewda"]
@@ -18,8 +18,10 @@
 [ext_resource type="Script" uid="uid://cbvctah1vda0n" path="res://Scripts/fourth_challenge.gd" id="16_uu6ay"]
 [ext_resource type="Script" uid="uid://cnt2v7l85jmht" path="res://Scripts/fifth_challenge.gd" id="17_08630"]
 [ext_resource type="Script" uid="uid://cwqdroy74qc70" path="res://Scripts/sixth_challenge.gd" id="18_4djc3"]
+[ext_resource type="PackedScene" uid="uid://jtgqumhn2o4a" path="res://Scenes/input_keyboard.tscn" id="19_v2gni"]
+[ext_resource type="Script" uid="uid://c60g84ehlm1jk" path="res://Scripts/finale.gd" id="20_ekaqe"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "challengeSix", "title", "bg")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "challengeFour", "challengeFive", "challengeSix", "challengeSeven", "title", "finale", "bg")]
 script = ExtResource("1_m8nr8")
 challengeOne = NodePath("FirstChallenge")
 challengeTwo = NodePath("SecondChallenge")
@@ -27,7 +29,9 @@ challengeThree = NodePath("ThirdChallenge")
 challengeFour = NodePath("FourthChallenge")
 challengeFive = NodePath("FifthChallenge")
 challengeSix = NodePath("SixthChallenge")
+challengeSeven = NodePath("InputKeyboardChallenge")
 title = NodePath("Title")
+finale = NodePath("Finale")
 bg = NodePath("Control/ColorRect")
 challengeOneBG = Color(0.023529412, 0, 0.05882353, 1)
 challengeTwoBG = Color(0.043999985, 0, 0.06, 1)
@@ -491,6 +495,7 @@ text = "     "
 horizontal_alignment = 1
 
 [node name="SixthChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "correctButton", "leftButton", "midButton", "rightButton", "confirmButton", "resultLabel", "realChallengeLabel")]
+visible = false
 script = ExtResource("18_4djc3")
 gameLabel = NodePath("Control2/GameLabel")
 correctButton = NodePath("Control2/Correct")
@@ -603,6 +608,68 @@ text = "Confirm"
 layout_mode = 2
 text = "     "
 horizontal_alignment = 1
+
+[node name="InputKeyboardChallenge" parent="." instance=ExtResource("19_v2gni")]
+visible = false
+
+[node name="Finale" type="Node2D" parent="." node_paths=PackedStringArray("youLabel", "scoreLabel", "reflectionSprite", "finaleLabel", "psLabel")]
+script = ExtResource("20_ekaqe")
+youLabel = NodePath("Control/you")
+scoreLabel = NodePath("Control/scoreLabel")
+reflectionSprite = NodePath("Control/reflection")
+finaleLabel = NodePath("Control/fin")
+psLabel = NodePath("Control/scoreLabel2")
+
+[node name="Control" type="Control" parent="Finale"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="you" parent="Finale/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 147.0
+offset_right = 405.0
+offset_bottom = 190.0
+text = "You:"
+
+[node name="scoreLabel" parent="Finale/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 388.0
+offset_right = 405.0
+offset_bottom = 431.0
+text = "Scored"
+
+[node name="reflection" type="Sprite2D" parent="Finale/Control"]
+position = Vector2(386, 184)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_uu6ay")
+
+[node name="fin" parent="Finale/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 613.0
+offset_top = 101.0
+offset_right = 1822.0
+offset_bottom = 482.0
+theme_override_font_sizes/normal_font_size = 96
+text = "Thank You
+For 
+Playing."
+
+[node name="scoreLabel2" parent="Finale/Control" instance=ExtResource("1_2c717")]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 496.0
+offset_right = 906.0
+offset_bottom = 539.0
+theme_override_font_sizes/normal_font_size = 24
+text = "I Scored 31 btw."
 
 [connection signal="pressed" from="FirstChallenge/Control/GameButton" to="FirstChallenge" method="_on_game_button_pressed"]
 [connection signal="value_changed" from="SecondChallenge/Control/HSlider" to="SecondChallenge" method="_on_h_slider_value_changed"]

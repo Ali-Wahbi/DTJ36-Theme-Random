@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://jtgqumhn2o4a"]
+
+[ext_resource type="Script" uid="uid://dludyj5e5rued" path="res://Scripts/input_keyboard.gd" id="1_tnpyr"]
+[ext_resource type="FontFile" uid="uid://danpb8iwkmhe4" path="res://Assets/Fonts/static/JetBrainsMono-Italic.ttf" id="2_7idrj"]
+[ext_resource type="FontFile" uid="uid://b1lfpo6dy47hs" path="res://Assets/Fonts/static/JetBrainsMono-Bold.ttf" id="2_bnq5p"]
+[ext_resource type="FontFile" uid="uid://dlfkpkhirc6fa" path="res://Assets/Fonts/static/JetBrainsMono-Light.ttf" id="2_d421o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkuhl"]
+bg_color = Color(0, 0.117647, 0.137255, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e08e1"]
+bg_color = Color(0, 0.675588, 0.758608, 1)
+
+[node name="InputKeyboard" type="Node2D"]
+script = ExtResource("1_tnpyr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 348.514
+offset_top = 108.0
+offset_right = 852.514
+offset_bottom = 325.9997
+pivot_offset = Vector2(252, 109)
+theme_override_fonts/font = ExtResource("2_bnq5p")
+theme_override_font_sizes/font_size = 64
+text = "Press A
+to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resetLabel" type="Label" parent="."]
+offset_left = 323.0
+offset_top = 293.2317
+offset_right = 880.0
+offset_bottom = 404.2317
+pivot_offset = Vector2(252, 109)
+theme_override_fonts/font = ExtResource("2_d421o")
+theme_override_font_sizes/font_size = 32
+text = "Press R to restart, Q to Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Info" type="Label" parent="."]
+offset_left = 323.0
+offset_top = 364.9997
+offset_right = 871.0
+offset_bottom = 614.9997
+theme_override_colors/font_color = Color(1, 0.89887, 0.176102, 1)
+theme_override_fonts/font = ExtResource("2_7idrj")
+theme_override_font_sizes/font_size = 24
+text = "Press in the keyboard the letter shown
+timer : 1.5 seconds"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+clip_children = 2
+offset_left = 348.514
+offset_top = 108.4087
+offset_right = 852.514
+offset_bottom = 328.4087
+theme_override_styles/background = SubResource("StyleBoxFlat_vkuhl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e08e1")
+value = 54.7
+fill_mode = 3
+show_percentage = false
+
+[node name="LabelBg" type="Label" parent="ProgressBar"]
+layout_mode = 0
+offset_left = -0.000152588
+offset_top = -0.408722
+offset_right = 504.0
+offset_bottom = 217.591
+pivot_offset = Vector2(252, 109)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bnq5p")
+theme_override_font_sizes/font_size = 64
+text = "Press A
+to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
