@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj3bsk4t771mp"]
+[gd_scene load_steps=16 format=3 uid="uid://cj3bsk4t771mp"]
 
 [ext_resource type="PackedScene" uid="uid://bejxgj2nq3fkv" path="res://Scenes/gameLabel.tscn" id="1_2c717"]
 [ext_resource type="Script" uid="uid://beu8ngo0bwyml" path="res://Scripts/first_challenge.gd" id="1_hewda"]
@@ -14,11 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://by3u1pa2hlxro" path="res://Assets/Faces/faces (6).png" id="11_4djc3"]
 [ext_resource type="Texture2D" uid="uid://g52gdoxqbl78" path="res://Assets/Faces/REFLECTION-TEXT1.PNG" id="12_v2gni"]
 [ext_resource type="Script" uid="uid://ccwhr3gfugqlf" path="res://Scripts/title.gd" id="14_0bgj2"]
+[ext_resource type="Script" uid="uid://dbagrinubyeyy" path="res://Scripts/third_challenge.gd" id="15_oy1pr"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "title", "bg")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("challengeOne", "challengeTwo", "challengeThree", "title", "bg")]
 script = ExtResource("1_m8nr8")
 challengeOne = NodePath("FirstChallenge")
 challengeTwo = NodePath("SecondChallenge")
+challengeThree = NodePath("ThirdChallenge")
 title = NodePath("Title")
 bg = NodePath("Control/ColorRect")
 challengeOneBG = Color(0.023529412, 0, 0.05882353, 1)
@@ -27,7 +29,9 @@ titleBG = Color(0.06, 0, 0.056, 1)
 challengeThreeBG = Color(0.06, 0, 0.03600002, 1)
 challengeFourBG = Color(0.06, 0, 0.015999984, 1)
 challengeOneDelay = 0.7
-challengeTwoDelay = 1.0
+challengeTwoDelay = 0.5
+challengeThreeDelay = 0.5
+challengeFourDelay = 0.5
 titleDelay = 0.9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -189,27 +193,119 @@ offset_left = 395.0
 offset_top = 219.0
 offset_right = 779.0
 offset_bottom = 389.0
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/normal_font_size = 128
 text = "NAMED"
 
 [node name="game" parent="Title/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
-offset_left = 395.0
-offset_top = 337.0
-offset_right = 779.0
-offset_bottom = 507.0
-theme_override_font_sizes/font_size = 64
+offset_left = 402.0
+offset_top = 347.0
+offset_right = 545.0
+offset_bottom = 395.0
 text = "Game"
 
 [node name="fin" parent="Title/Control" instance=ExtResource("1_2c717")]
 layout_mode = 0
-offset_left = 556.0
+offset_left = 619.0
 offset_top = 357.0
-offset_right = 940.0
-offset_bottom = 527.0
-theme_override_font_sizes/font_size = 24
+offset_right = 928.0
+offset_bottom = 419.0
+theme_override_font_sizes/normal_font_size = 16
 text = "Didn't Find One"
+
+[node name="ThirdChallenge" type="Node2D" parent="." node_paths=PackedStringArray("gameLabel", "redButton", "yellowButton", "blueButton", "confirmButton", "resultLabel")]
+visible = false
+script = ExtResource("15_oy1pr")
+gameLabel = NodePath("Control2/GameLabel")
+redButton = NodePath("Control2/HBoxContainer/red")
+yellowButton = NodePath("Control2/HBoxContainer/yellow")
+blueButton = NodePath("Control2/HBoxContainer/blue")
+confirmButton = NodePath("Control2/VBoxContainer/GameButton4")
+resultLabel = NodePath("Control2/VBoxContainer/resultLabel")
+
+[node name="Control2" type="Control" parent="ThirdChallenge"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1158.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameLabel" parent="ThirdChallenge/Control2" instance=ExtResource("1_2c717")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 254.0
+offset_top = 181.0
+offset_right = 927.0
+offset_bottom = 224.0
+text = "Choose the [color=red]Red[/color] one of the following"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ThirdChallenge/Control2"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 269.0
+offset_right = 921.0
+offset_bottom = 335.0
+
+[node name="red" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.089999974, 0.089999974, 1)
+theme_override_colors/font_pressed_color = Color(0.84, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.09019608, 0.09019608, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8392157, 0, 0, 1)
+text = "Red"
+
+[node name="yellow" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9490196, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.14999998, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85333335, 0.120000005, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.66499996, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.73, 0.65700006, 0, 1)
+text = "Yellow"
+
+[node name="blue" parent="ThirdChallenge/Control2/HBoxContainer" instance=ExtResource("2_ly6xb")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.29999995, 1, 1)
+theme_override_colors/font_focus_color = Color(0.05533328, 0, 0.83, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.5999999, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.7599997, 0.95, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.5, 1, 1)
+text = "Blue"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ThirdChallenge/Control2"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 391.0
+offset_right = 727.0
+offset_bottom = 580.0
+
+[node name="GameButton4" parent="ThirdChallenge/Control2/VBoxContainer" instance=ExtResource("2_ly6xb")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="resultLabel" parent="ThirdChallenge/Control2/VBoxContainer" instance=ExtResource("1_2c717")]
+layout_mode = 2
+text = "     "
+horizontal_alignment = 1
 
 [connection signal="pressed" from="FirstChallenge/Control/GameButton" to="FirstChallenge" method="_on_game_button_pressed"]
 [connection signal="value_changed" from="SecondChallenge/Control/HSlider" to="SecondChallenge" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="SecondChallenge/Control/GameButton" to="SecondChallenge" method="_on_game_button_pressed"]
+[connection signal="pressed" from="ThirdChallenge/Control2/HBoxContainer/red" to="ThirdChallenge" method="_on_red_pressed"]
+[connection signal="pressed" from="ThirdChallenge/Control2/HBoxContainer/yellow" to="ThirdChallenge" method="_on_yellow_pressed"]
+[connection signal="pressed" from="ThirdChallenge/Control2/HBoxContainer/blue" to="ThirdChallenge" method="_on_blue_pressed"]
+[connection signal="pressed" from="ThirdChallenge/Control2/VBoxContainer/GameButton4" to="ThirdChallenge" method="_on_game_button_4_pressed"]

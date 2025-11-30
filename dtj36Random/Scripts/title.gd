@@ -3,10 +3,10 @@ extends Node2D
 signal challengeIsDone
 signal allObjectsHidden
 
-@export var firstLabel: Label
-@export var secondLabel: Label
-@export var thirdLabel: Label
-@export var foarthLabel: Label
+@export var firstLabel: RichTextLabel
+@export var secondLabel: RichTextLabel
+@export var thirdLabel: RichTextLabel
+@export var foarthLabel: RichTextLabel
 
 @export var firstDelay: float = 0.5
 @export var secondDelay: float = 0.5
@@ -55,7 +55,7 @@ func hideAllObjects(duration: float = 0.5):
 	allObjectsHidden.emit()
 
 
-func tweenFade(object: Label, from: float, to: float, duration: float) -> Signal:
+func tweenFade(object: RichTextLabel, from: float, to: float, duration: float) -> Signal:
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	object.modulate.a = from
 	tween.tween_property(object, "modulate:a", to, duration)

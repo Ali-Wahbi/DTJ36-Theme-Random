@@ -3,9 +3,9 @@ extends Node2D
 signal challengeIsDone
 signal allObjectsHidden
 
-@export var numberLabel: Label
-@export var showLabel: Label
-@export var resultLabel: Label
+@export var numberLabel: RichTextLabel
+@export var showLabel: RichTextLabel
+@export var resultLabel: RichTextLabel
 @export var maxRange: int = 10
 
 var goalNumber: int = 0

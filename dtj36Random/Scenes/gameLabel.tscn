@@ -1,10 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bejxgj2nq3fkv"]
+[gd_scene load_steps=6 format=3 uid="uid://bejxgj2nq3fkv"]
 
 [ext_resource type="FontFile" uid="uid://b1lfpo6dy47hs" path="res://Assets/Fonts/static/JetBrainsMono-Bold.ttf" id="1_3j31o"]
+[ext_resource type="FontFile" uid="uid://dxm5dhmuptry7" path="res://Assets/Fonts/static/JetBrainsMono-Medium.ttf" id="1_o0ngn"]
+[ext_resource type="FontFile" uid="uid://dbu2gr3ksxhxk" path="res://Assets/Fonts/static/JetBrainsMono-BoldItalic.ttf" id="3_qcci6"]
+[ext_resource type="FontFile" uid="uid://danpb8iwkmhe4" path="res://Assets/Fonts/static/JetBrainsMono-Italic.ttf" id="4_fiy6c"]
+[ext_resource type="FontFile" uid="uid://ccyk6ma5eyclb" path="res://Assets/Fonts/static/JetBrainsMono-Regular.ttf" id="5_tb5gv"]
 
-[node name="GameLabel" type="Label"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("1_3j31o")
-theme_override_font_sizes/font_size = 32
+[node name="GameLabel" type="RichTextLabel"]
+texture_filter = 1
+offset_right = 288.0
+offset_bottom = 43.0
+theme_override_fonts/normal_font = ExtResource("1_o0ngn")
+theme_override_fonts/bold_font = ExtResource("1_3j31o")
+theme_override_fonts/bold_italics_font = ExtResource("3_qcci6")
+theme_override_fonts/italics_font = ExtResource("4_fiy6c")
+theme_override_fonts/mono_font = ExtResource("5_tb5gv")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
 text = "Game Label here"
+fit_content = true
+autowrap_mode = 0

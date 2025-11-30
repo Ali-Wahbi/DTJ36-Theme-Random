@@ -2,6 +2,8 @@ extends Node2D
 
 @export var challengeOne: Node2D
 @export var challengeTwo: Node2D
+@export var challengeThree: Node2D
+@export var challengeFour: Node2D
 @export var title: Node2D
 
 
@@ -17,19 +19,29 @@ extends Node2D
 @export_group("Challenges Delays")
 @export var challengeOneDelay: float
 @export var challengeTwoDelay: float
+@export var challengeThreeDelay: float
+@export var challengeFourDelay: float
 @export var titleDelay: float
+
+var isChallengeOneDone: bool = false
+var isChallengeTwoDone: bool = false
+var isChallengeThreeDone: bool = false
+var isChallengeFourDone: bool = false
+var isTitleDone: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hideAllChallenges()
 	setupSignals()
-	# startTitle()
+	
 	startChallengeOne()
 
 
 func hideAllChallenges():
 	challengeOne.visible = false
 	challengeTwo.visible = false
+	challengeThree.visible = false
 	title.visible = false
 
 
@@ -47,6 +59,13 @@ func startChallengeTwo():
 	await _create_timer(challengeTwoDelay)
 	challengeTwo.showAllObjects()
 
+func startChallengeThree():
+	print("Starting challenge two")
+	challengeThree.visible = true
+	tweenBG(challengeThreeBG)
+	await _create_timer(challengeThreeDelay)
+	challengeThree.showAllObjects()
+
 func startTitle():
 	print("Starting title")
 	title.visible = true
@@ -56,14 +75,12 @@ func startTitle():
 
 func _create_timer(time: float = 0) -> Signal:
 	return get_tree().create_timer(time).timeout
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	
 
 func setupSignals():
 	challengeOne.challengeIsDone.connect(onChallengeOneDone)
 	challengeTwo.challengeIsDone.connect(onChallengeTwoDone)
+	challengeThree.challengeIsDone.connect(onChallengeThreeDone)
 	title.challengeIsDone.connect(onTitleDone)
 
 
@@ -72,23 +89,42 @@ func tweenBG(color: Color, duration: float = 3.5):
 	tween.tween_property(bg, "color", color, duration)
 
 func onChallengeOneDone():
+	if isChallengeOneDone:
+		return
+	isChallengeOneDone = true
 	print("Challenge one done")
-	await _create_timer(3)
+	await _create_timer(2)
 	challengeOne.hideAllObjects(true)
 	await challengeOne.allObjectsHidden
 	startChallengeTwo()
 
 
 func onChallengeTwoDone():
+	if isChallengeTwoDone:
+		return
+	isChallengeTwoDone = true
 	print("Challenge two done")
-	await _create_timer(3)
+	await _create_timer(2)
 	challengeTwo.hideAllObjects(true)
 	await challengeTwo.allObjectsHidden
 	startTitle()
 
+func onChallengeThreeDone():
+	if isChallengeThreeDone:
+		return
+	isChallengeThreeDone = true
+	print("Challenge three done")
+	await _create_timer(1)
+	challengeThree.hideAllObjects(true)
+	await challengeThree.allObjectsHidden
+	# startTitle()
+
 func onTitleDone():
+	if isTitleDone:
+		return
+	isTitleDone = true
 	print("Title done")
 	await _create_timer(2)
 	title.hideAllObjects()
 	await title.allObjectsHidden
-	# startChallengeOne()
+	startChallengeThree()
